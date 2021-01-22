@@ -1,22 +1,22 @@
-all: hello.o hello hello.asm hello-c.asm run
+all: bomb run
 
-hello.o: hello.c
-	mcc hello.c -static -c -o hello.o
+bomb.o: bomb.c
+	mcc bomb.c tasks.c -static -c -o bomb.o
 
-hello: hello.c
-	mcc hello.c -static -o hello
+bomb: bomb.c
+	mcc bomb.c tasks.c -static -o bomb
 
-hello-c.asm: hello.o
-	mobjdump -Sa hello.o > hello-c.asm
+bomb-c.asm: bomb.o
+	mobjdump -Sa bomb.o > bomb-c.asm
 
-hello.asm: hello
-	mobjdump -Sa hello > hello.asm
+bomb.asm: bomb
+	mobjdump -Sa bomb > bomb.asm
 
-run: hello
-	qemu-mipsel hello
+run: bomb
+	qemu-mipsel bomb
 
-run-server: hello
-	qemu-mipsel -g 9999 hello
+run-server: bomb
+	qemu-mipsel -g 9999 bomb
 
 clean:
-	rm hello.o hello hello.asm hello-c.asm
+	rm bomb.o bomb bomb.asm bomb-c.asm
