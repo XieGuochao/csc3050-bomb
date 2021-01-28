@@ -1,4 +1,4 @@
-all: bomb.o bomb bomb.asm bomb-c.asm run
+all: bomb run
 
 bomb.o: bomb.c
 	mcc bomb.c tasks.c -static -c -o bomb.o

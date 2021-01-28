@@ -1,6 +1,8 @@
 #ifndef tasks_h
 #define tasks_h
 
-void task1();
+int task1();
+int task2();
+int task3();
 
 #endif
